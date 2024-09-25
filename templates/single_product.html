@@ -1,0 +1,62 @@
+{% extends "master.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="/static/css/single_product_style.css">
+</head>
+<body>
+    <div class="product-page">
+        {% for pro in product %}
+        <div class="product-images">
+            <img src="{{pro.image.url}}" alt="{{pro.name}}" class="main-image">
+        </div>
+        {% endfor %}
+
+        {% for product in product %}
+
+        <div class="product-details">
+            <h1>{{product.name}}</h1>
+            <p class="description">{{product.description}}</p>
+            
+            <div class="price">
+                <span class="current-price">Rs. {{product.price}}</span>
+                <span class="original-price">Rs. 4,999</span>
+                <span class="discount">-50%</span>
+            </div>
+            
+            <div class="rating">
+                <p>No Ratings</p>
+            </div>
+            
+            <div class="color-selection">
+                <label for="color">Color Family:</label>
+                <select id="color" name="color">
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                </select>
+            </div>
+            
+            <div class="quantity-selection">
+                <label for="quantity">Quantity:</label>
+                <div class="quantity-control">
+                    <button class="decrease">-</button>
+                    <input type="number" id="quantity" name="quantity" value="1">
+                    <button class="increase">+</button>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button class="buy-now">Buy Now</button>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock %}
