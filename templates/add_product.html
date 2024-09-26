@@ -30,8 +30,6 @@
           <option selected>select Category</option>
           {% for results in show_category %}
           <option value="{{results.id}}">{{results.name}}</option>
-          {% comment %} <option value="2">Two</option>
-          <option value="3">Three</option> {% endcomment %}
           {% endfor %}
         </select>
         <button type="submit" class="btn btn-primary">Submit</button>

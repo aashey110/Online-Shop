@@ -15,11 +15,6 @@
 
     <div class="container">
         <h2>Categories</h2>
-        <div class="container">
-            <a href="{% url "add_category" %}">
-              <button class="load-more-btn">Add More Products</button>
-            </a>
-          </div>
           <ul class="list-group">
             {% for message in messages %}
               <li class="list-group-item text-success">

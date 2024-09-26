@@ -29,5 +29,6 @@ urlpatterns = [
     path('contact_us/', views.contact_us, name = 'contact_us'),
     path('product/', include('product.urls')),
     path('contact/', include('contact.urls')),
+    path('adminPanel/', include('adminPanel.urls'))
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
