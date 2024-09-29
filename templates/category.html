@@ -24,7 +24,7 @@
           </ul>
         <div class="categories-grid">
             {% for cate in categories %}
-            <a href="#" class="category-item">
+            <a href="{% url 'product_by_category' category.id %}" class="category-item">
                 <img src="{{cate.image.url}}" alt="{{cate.name}}">
                 <h3>{{cate.name}}</h3>
             </a>

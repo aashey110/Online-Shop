@@ -19,7 +19,7 @@ class Product(models.Model):
     discount = models.IntegerField()
     image = models.ImageField(upload_to='products/images/', null = True, max_length=250, default=None)
     description = models.TextField()
-    category = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE, related_name="products")
 
     def __str__(self)  -> str:
         return self.name

@@ -3,8 +3,8 @@ from .models import Category, Product
 from django.contrib import messages
 
 # Create your views here.
-def admin_panel(request):
-    return render(request, "admin_panel.html")
+def admin_index(request):
+    return render(request, "admin_index.html")
 
 
 def admin_product(request):
@@ -52,3 +52,4 @@ def admin_add_product_validation(request):
 
 
         return redirect("admin_add_product")
+    

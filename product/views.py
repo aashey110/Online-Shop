@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 # from .models import Categories, Product
 from adminPanel.models import Product, Category
 from django.contrib import messages
@@ -31,6 +31,21 @@ def productDetail(request, id):
         "products" : all_products,
     }
     return render(request, "single_product.html", data)
+
+def product_by_category(request, category_id):
+    # Get the category
+    category = get_object_or_404(Category, id=category_id)
+    
+    # Filter products by the selected category
+    products = Product.objects.filter(category=category)
+    
+    data = {
+        'title': f'Products in {category.name}',
+        'products': products,
+        'category': category,
+    }
+    
+    return render(request, 'product_by_category.html', data)
 
 
 # def add_product(request):

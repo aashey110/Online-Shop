@@ -21,8 +21,8 @@
                     <th scope="col">&nbsp;</th>
                   </tr>
                 </thead>
-                {% for item in products %}
                 <tbody>
+                  {% for item in products %}
                   <tr>
                     <th scope="row"><input type="checkbox" /></th>
                     <td class="tm-product-name">{{item.name}}</td>
@@ -35,9 +35,9 @@
                       </a>
                     </td>
                   </tr>
+                  {% endfor %}
                   </tr>
                 </tbody>
-                {% endfor %}
               </table>
             </div>
             <!-- table container -->

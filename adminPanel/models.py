@@ -20,8 +20,6 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/images/', null = True, max_length=250, default=None)
     description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    # created_at = models.DateTimeField(auto_now_add=True)
-    # expiry_date = models.DateField(null=True, blank=True)
     stock = models.IntegerField(default=0)
 
     def __str__(self)  -> str:
