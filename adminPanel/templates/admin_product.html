@@ -19,6 +19,7 @@
                     <th scope="col">IN STOCK</th>
                     <th scope="col">DISCOUNT</th>
                     <th scope="col">&nbsp;</th>
+                    <th scope="col">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,10 @@
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                       </a>
                     </td>
+                    <td class = "text-center">
+                      <a href="{% url 'edit_product' item.id %}" class="tm-product-delete-link">
+                      <i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                      </td>
                   </tr>
                   {% endfor %}
                   </tr>
@@ -63,6 +68,10 @@
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                       </a>
                     </td>
+                    <td class = "text-center">
+                      <a href="#" class="tm-product-delete-link">
+                      <i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                      </td>
                   </tr> 
                 </tbody>
                 {% endfor %}
@@ -78,8 +87,8 @@
     </div>
     
 
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'adminPanel/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'adminPanel/js/bootstrap.min.js' %}"></script>
     <script>
       $(function() {
         $(".tm-product-name").on("click", function() {
