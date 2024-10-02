@@ -85,10 +85,13 @@
         </div>
       </div>
     </div>
+    {% endblock content %}
     
 
-    <script src="{% static 'adminPanel/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'adminPanel/js/bootstrap.min.js' %}"></script>
+    {% block scripts %}
+
+    <script src="{% static 'adminpanel/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'adminpanel/js/bootstrap.min.js' %}"></script>
     <script>
       $(function() {
         $(".tm-product-name").on("click", function() {
@@ -96,6 +99,7 @@
         });
       });
     </script>
+    {% endblock scripts %}
+
   </body>
 </html>
-{% endblock content %}

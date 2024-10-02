@@ -1,8 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Category, Product
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
+@login_required(login_url='/admin/login/')
 def admin_index(request):
     data = {
         "active_page": 'index'
@@ -10,7 +15,7 @@ def admin_index(request):
     }
     return render(request, "admin_index.html", data)
 
-
+@login_required(login_url='/admin/login/')
 def admin_product(request):
     all_categories = Category.objects.all()
     all_product = Product.objects.all()
@@ -21,7 +26,7 @@ def admin_product(request):
     }
     return render(request, "admin_product.html", data)
 
-
+@login_required(login_url='/admin/login/')
 def admin_add_category(request):
     return render(request, "admin_add_category.html")
 
@@ -37,7 +42,7 @@ def admin_add_category_validation(request):
     return redirect('admin_add_category')
 
 
-
+@login_required(login_url='/admin/login/')
 def admin_add_product(request):
     category_list = Category.objects.all()
     return render(request, "admin_add_product.html", {"show_category":category_list} )
@@ -61,6 +66,7 @@ def admin_add_product_validation(request):
         return redirect("admin_add_product")
     
 
+@login_required(login_url='/admin_index/login/')
 def edit_product(request, id):
     pro = Product.objects.get(id=id)
     category_list = Category.objects.all()
@@ -71,9 +77,6 @@ def edit_product(request, id):
     return render(request, 'edit_product.html', data)
     
 
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib import messages
-from .models import Product
 
 def update(request, id):
     if request.method == 'POST':
@@ -107,4 +110,22 @@ def update(request, id):
         return redirect("admin_add_product")
 
 
-    
+
+def admin_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user)
+            return redirect('admin_index')
+    return render(request, 'login.html')
+
+def admin_accounts(request):
+    return render(request, 'accounts.html')
+
+#code to log out
+def admin_logout(request):
+    logout(request)
+    return redirect('login')

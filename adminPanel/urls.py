@@ -11,4 +11,8 @@ urlpatterns = [
     path("admin_add_product_validation/", views.admin_add_product_validation, name = "admin_add_product_validation"),
     path('edit_product/<int:id>', views.edit_product, name='edit_product'),
     path('update/<int:id>', views.update, name='update'),
+    path('login/', views.admin_login, name='login'),
+    path('accounts/', views.admin_accounts, name='accounts'),
+    path('logout/', views.admin_logout, name='logout'),
+
 ]

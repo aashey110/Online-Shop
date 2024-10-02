@@ -44,16 +44,15 @@
         <a href="#">SHOP ALL PRODUCTS</a>
     </div>
 </div>
-</div>
 
 
 <div class="container">
   <div class="products-grid">
-      {% for item in sale_items %}
-      <a href="#" class="product-item">
-          <img src="{{ item.image.url }}" alt="{{ product.name }}">
-          <h3>{{ item.name }}</h3>
-          <p class="price">${{ item.price }}</p>
+      {% for product in products %}
+      <a href="{% url "productdetail" id=product.id %}" class="product-item">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          <h3>{{ product.name }}</h3>
+          <p class="price">${{ product.price }}</p>
           {% comment %} <p>{{ product.description|truncatewords:15 }}</p> <!-- Shortened description --> {% endcomment %}
       </a>
       {% endfor %}
@@ -62,6 +61,4 @@
 
 
 
-{% include "utilities/products.html" %}
-
-{% endblock  %}
+{% endblock content %}
