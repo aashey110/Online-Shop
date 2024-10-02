@@ -122,6 +122,7 @@ def admin_login(request):
             return redirect('admin_index')
     return render(request, 'login.html')
 
+@login_required(login_url='/admin_index/login/')
 def admin_accounts(request):
     return render(request, 'accounts.html')
 
@@ -129,3 +130,11 @@ def admin_accounts(request):
 def admin_logout(request):
     logout(request)
     return redirect('login')
+
+
+#delete product
+def delete_product(request, id):
+    product = Product.objects.get(id=id)
+    product.delete()
+    messages.success(request, "Product deleted successfully")
+    return redirect('admin_product')
